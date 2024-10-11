@@ -20,8 +20,6 @@ RUN python -m venv .env && \
     . .env/bin/activate && \
     git submodule update --init --recursive && \
     cd TTS && \
-    git fetch --tags && \
-    git checkout 0.1.1 && \
     echo "Installing TTS..." && \
     pip install --use-deprecated=legacy-resolver -e . -q || { echo "TTS installation failed"; exit 1; } && \
     cd .. && \
