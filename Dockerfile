@@ -23,12 +23,12 @@ RUN python -m venv .env && \
     git fetch --tags && \
     git checkout 0.1.1 && \
     echo "Installing TTS..." && \
-    pip install --use-deprecated=legacy-resolver -e . -q && \
+    pip install --use-deprecated=legacy-resolver -e . -q || { echo "TTS installation failed"; exit 1; } && \
     cd .. && \
     echo "Installing other requirements..." && \
-    pip install -r requirements.txt -q && \
+    pip install -r requirements.txt -q || { echo "Requirements installation failed"; exit 1; } && \
     echo "Downloading Japanese/Chinese tokenizer..." && \
-    python -m unidic download && \
+    python -m unidic download || { echo "Tokenizer download failed"; exit 1; } && \
     touch .env/ok
 
 # Set the default command to run when starting the container
