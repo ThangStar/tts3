@@ -31,3 +31,7 @@ RUN python -m venv .env && \
 
 # Set the default command to run when starting the container
 CMD ["/bin/bash"]
+
+
+
+
